@@ -5,9 +5,8 @@ app = Flask(__name__)
 
 def fetch_weather(city):
     url = f"http://api.weatherapi.com/v1/current.json?key=afe2aaf24756473993f120621241403&q={city}"
-    response = requests.get(url)
-    response.raise_for_status()
-    weather_data = response.json()
+    request1 = requests.get(url)
+    weather_data = request1.json()
     return weather_data["current"]["temp_c"], weather_data["current"]["condition"]["text"], weather_data["location"]["name"]
 
 @app.route("/", methods=["GET", "POST"])
